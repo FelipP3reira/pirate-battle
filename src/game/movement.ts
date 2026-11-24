@@ -3,16 +3,21 @@ import { circleOutOfCollider } from './collision';
 import { approach, clamp, wrapAngle } from './math';
 import type { Ship } from './types';
 
-export function steer(ship: Ship, turnInput: number, throttle: number, dt: number): void {
-  ship.angle = wrapAngle(ship.angle + clamp(turnInput, -1, 1) * ship.hull.turnRate * dt);
-  const targetSpeed = ship.hull.maxSpeed * clamp(throttle, 0, 1);
-  const rate = targetSpeed > ship.speed ? ship.hull.acceleration : ship.hull.deceleration;
+const COLLISION_PASSES = 3;
+
+function steer(ship: Ship, turnInput: number, throttle: number, dt: number): void {
+  const { hull } = ship;
+  ship.angle = wrapAngle(ship.angle + clamp(turnInput, -1, 1) * hull.turnRate * dt);
+
+  const targetSpeed = hull.maxSpeed * clamp(throttle, 0, 1);
+  const rate = targetSpeed > ship.speed ? hull.acceleration : hull.deceleration;
   ship.speed = approach(ship.speed, targetSpeed, rate * dt);
+
   ship.x += Math.cos(ship.angle) * ship.speed * dt;
   ship.y += Math.sin(ship.angle) * ship.speed * dt;
 }
 
-export function hullCircles(ship: Ship): Array<{ x: number; y: number }> {
+function hullPoints(ship: Ship): Array<{ x: number; y: number }> {
   const dx = Math.cos(ship.angle) * ship.hull.hullHalfLength;
   const dy = Math.sin(ship.angle) * ship.hull.hullHalfLength;
   return [
@@ -22,47 +27,34 @@ export function hullCircles(ship: Ship): Array<{ x: number; y: number }> {
   ];
 }
 
-export function resolveIslands(ship: Ship, arena: Arena): boolean {
-  let touched = false;
-  for (let iteration = 0; iteration < 3; iteration += 1) {
-    let moved = false;
+export function resolveIslands(ship: Ship, arena: Arena): void {
+  let scraped = false;
+  for (let pass = 0; pass < COLLISION_PASSES; pass += 1) {
+    let pushed = false;
     for (const island of arena.islands) {
-      for (const circle of hullCircles(ship)) {
-        const push = circleOutOfCollider(circle, ship.hull.hullRadius, island.collider);
-        if (push) {
-          ship.x += push.x;
-          ship.y += push.y;
-          moved = true;
-          touched = true;
-        }
+      for (const point of hullPoints(ship)) {
+        const push = circleOutOfCollider(point, ship.hull.hullRadius, island.collider);
+        if (!push) continue;
+        ship.x += push.x;
+        ship.y += push.y;
+        pushed = true;
       }
     }
-    if (!moved) break;
+    if (!pushed) break;
+    scraped = true;
   }
-  if (touched) ship.speed = Math.min(ship.speed, ship.hull.maxSpeed * 0.45);
-  return touched;
+  if (scraped) ship.speed = Math.min(ship.speed, ship.hull.maxSpeed * ship.hull.coastSpeedRatio);
 }
 
-export function confineToArena(ship: Ship, arena: Arena): boolean {
-  let touched = false;
-  for (const circle of hullCircles(ship)) {
-    const radius = ship.hull.hullRadius;
-    if (circle.x < radius) {
-      ship.x += radius - circle.x;
-      touched = true;
-    } else if (circle.x > arena.width - radius) {
-      ship.x -= circle.x - (arena.width - radius);
-      touched = true;
-    }
-    if (circle.y < radius) {
-      ship.y += radius - circle.y;
-      touched = true;
-    } else if (circle.y > arena.height - radius) {
-      ship.y -= circle.y - (arena.height - radius);
-      touched = true;
-    }
+export function confineToArena(ship: Ship, arena: Arena): void {
+  const radius = ship.hull.hullRadius;
+  for (const point of hullPoints(ship)) {
+    if (point.x < radius) ship.x += radius - point.x;
+    else if (point.x > arena.width - radius) ship.x -= point.x - (arena.width - radius);
+
+    if (point.y < radius) ship.y += radius - point.y;
+    else if (point.y > arena.height - radius) ship.y -= point.y - (arena.height - radius);
   }
-  return touched;
 }
 
 export function moveShip(ship: Ship, arena: Arena, turnInput: number, throttle: number, dt: number): void {

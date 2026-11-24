@@ -16,6 +16,7 @@ export function createShip(world: World, kind: Ship['kind'], placement: ShipPlac
       turnRate: hull.turnRate,
       hullHalfLength: hull.hullHalfLength,
       hullRadius: hull.hullRadius,
+      coastSpeedRatio: hull.coastSpeedRatio,
     },
     x: placement.x,
     y: placement.y,

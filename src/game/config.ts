@@ -11,6 +11,7 @@ export interface HullConfig {
   turnRate: number;
   hullHalfLength: number;
   hullRadius: number;
+  coastSpeedRatio: number;
 }
 
 export interface WeaponConfig {
@@ -34,10 +35,15 @@ export interface BalanceConfig {
   };
   chaser: HullConfig & {
     contactDamage: number;
+    leadSeconds: number;
+    sharpTurnAngle: number;
+    sharpTurnThrottle: number;
   };
   shooter: HullConfig & {
     attackRange: number;
     preferredRange: number;
+    holdThrottle: number;
+    backOffRatio: number;
     aimTolerance: number;
     cannon: WeaponConfig;
   };
@@ -96,6 +102,7 @@ export const HARD_BALANCE: BalanceConfig = {
     turnRate: 2.4,
     hullHalfLength: 30,
     hullRadius: 22,
+    coastSpeedRatio: 0.45,
     frontCannon: {
       cooldown: 0.4,
       damage: 20,
@@ -121,7 +128,11 @@ export const HARD_BALANCE: BalanceConfig = {
     turnRate: 1.9,
     hullHalfLength: 30,
     hullRadius: 22,
+    coastSpeedRatio: 0.45,
     contactDamage: 20,
+    leadSeconds: 0.35,
+    sharpTurnAngle: 1.2,
+    sharpTurnThrottle: 0.6,
   },
   shooter: {
     maxHealth: 60,
@@ -131,8 +142,11 @@ export const HARD_BALANCE: BalanceConfig = {
     turnRate: 1.6,
     hullHalfLength: 30,
     hullRadius: 22,
+    coastSpeedRatio: 0.45,
     attackRange: 420,
     preferredRange: 300,
+    holdThrottle: 0.3,
+    backOffRatio: 0.7,
     aimTolerance: 0.15,
     cannon: {
       cooldown: 2.4,
@@ -180,11 +194,6 @@ export const BALANCE_PRESETS: Record<Difficulty, BalanceConfig> = {
 
 export function isDifficulty(value: unknown): value is Difficulty {
   return value === 'normal' || value === 'hard';
-}
-
-export function clampSetting(key: NumericSetting, value: number): number {
-  const limit = SETTINGS_LIMITS[key];
-  return Math.min(limit.max, Math.max(limit.min, Math.round(value)));
 }
 
 export function validateSetting(key: NumericSetting, value: number): string | null {
