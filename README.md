@@ -4,6 +4,7 @@ A single-player, top-down naval shooter for the browser. Sail between islands, s
 
 Built with React, strict TypeScript and PixiJS. Ranking and match history come from REST APIs mocked with MSW and consumed through Axios and TanStack Query. Playwright covers end-to-end flows and visual regression.
 
+- **Live build:** https://pirate-battle-orcin-nine.vercel.app (Vercel, deployed from `main`; the mock API runs in the browser through MSW)
 - Original challenge brief: [docs/CHALLENGE.md](docs/CHALLENGE.md)
 - Architecture and decisions: [ARCHITECTURE.md](ARCHITECTURE.md)
 - Test report: `reports/playwright/index.html` (open with `npx playwright show-report reports/playwright`)
