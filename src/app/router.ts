@@ -40,6 +40,8 @@ export function useRoute(): [Route, (route: Route, options?: { replace?: boolean
   return [parseRoute(hash), navigate];
 }
 
+// A refresh during a battle abandons it: go back to the menu instead of
+// silently starting a new match.
 export function discardInterruptedMatch(): void {
   const route = parseRoute(currentHash());
   if (route === 'play') window.history.replaceState(null, '', PATHS.menu);

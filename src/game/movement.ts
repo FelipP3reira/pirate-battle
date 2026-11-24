@@ -17,6 +17,8 @@ function steer(ship: Ship, turnInput: number, throttle: number, dt: number): voi
   ship.y += Math.sin(ship.angle) * ship.speed * dt;
 }
 
+// A single circle doesn't fit a long hull, so bow, middle and stern each get
+// their own circle when we test against islands and the arena edge.
 function hullPoints(ship: Ship): Array<{ x: number; y: number }> {
   const dx = Math.cos(ship.angle) * ship.hull.hullHalfLength;
   const dy = Math.sin(ship.angle) * ship.hull.hullHalfLength;
@@ -29,6 +31,8 @@ function hullPoints(ship: Ship): Array<{ x: number; y: number }> {
 
 export function resolveIslands(ship: Ship, arena: Arena): void {
   let scraped = false;
+  // Pushing out of one island can push the hull into another one when they're
+  // close together, so we repeat a few times until nothing moves.
   for (let pass = 0; pass < COLLISION_PASSES; pass += 1) {
     let pushed = false;
     for (const island of arena.islands) {

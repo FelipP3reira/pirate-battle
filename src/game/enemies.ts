@@ -31,6 +31,7 @@ function avoidObstacles(arena: Arena, ship: Ship, desired: number): number {
     const candidate = wrapAngle(desired + offset);
     if (!probeBlocked(arena, ship, candidate, reach)) return candidate;
   }
+  // Boxed in: keep going and let the island collision slide the hull along the coast.
   return desired;
 }
 
@@ -46,6 +47,8 @@ function turnInputTowards(ship: Ship, desired: number, dt: number): number {
 function updateChaser(world: World, chaser: Ship, dt: number): void {
   const { player, arena } = world;
   const settings = world.config.balance.chaser;
+  // Aim slightly ahead of the player; chasing the current position makes the
+  // chaser trail behind and circle forever.
   const target = {
     x: player.x + Math.cos(player.angle) * player.speed * settings.leadSeconds,
     y: player.y + Math.sin(player.angle) * player.speed * settings.leadSeconds,

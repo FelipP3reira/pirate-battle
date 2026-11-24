@@ -52,6 +52,8 @@ export class SpawnDirector {
     world.enemies.push(enemy);
     world.events.push({ type: 'spawned', shipId: enemy.id, kind });
     this.spawned += 1;
+    // If we had to wait (enemy cap or no free spawn point), don't release the
+    // missed spawns all at once when room opens up.
     this.nextSpawnAt = Math.max(this.nextSpawnAt + this.interval, world.elapsed + this.interval / 2);
   }
 

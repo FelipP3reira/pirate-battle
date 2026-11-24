@@ -37,6 +37,8 @@ export class HealthBar {
     const index = fills.length === 3 ? (clamped > 0.6 ? 0 : clamped > 0.3 ? 1 : 2) : clamped > 0.4 ? 0 : 1;
     const source = fills[index] ?? fills[0];
     if (!source) return;
+    // Scaling the fill sprite would squash its rounded ends, so we show a
+    // narrower slice of the same atlas frame instead.
     this.cropped?.destroy(false);
     const width = Math.max(0, Math.round(fillRect.x + fillRect.width * clamped));
     if (clamped <= 0 || width <= fillRect.x) {
