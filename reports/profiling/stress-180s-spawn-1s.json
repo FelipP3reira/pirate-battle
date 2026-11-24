@@ -1,0 +1,444 @@
+{
+  "recordedAt": "2026-11-24T13:40:21.195Z",
+  "environment": {
+    "host": "Darwin 27.2.0 arm64",
+    "cpu": "Apple M1",
+    "cores": 8,
+    "memoryGB": 8,
+    "browser": "Chromium 159.0.8154.6 (Playwright, headless)",
+    "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "deviceScaleFactor": 1,
+    "build": "vite build --mode e2e (minified production bundle with test hooks enabled)"
+  },
+  "match": {
+    "sessionSeconds": 180,
+    "spawnSeconds": 1,
+    "seed": 3,
+    "input": "scripts/autopilot.mjs pressing real keys every 100 ms"
+  },
+  "result": {
+    "phase": "ended",
+    "elapsed": 21.266666666666666,
+    "score": 10,
+    "health": 0
+  },
+  "frames": {
+    "samples": 1270,
+    "meanIntervalMs": 16.666,
+    "averageFps": 60,
+    "p50IntervalMs": 16.7,
+    "p95IntervalMs": 16.8,
+    "p99IntervalMs": 16.8,
+    "maxIntervalMs": 16.8,
+    "framesOver20ms": 0,
+    "framesOver33ms": 0
+  },
+  "maxEntities": {
+    "enemies": 10,
+    "projectiles": 5,
+    "effects": 16
+  },
+  "timeline": [
+    {
+      "second": 0,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 1,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 2,
+      "enemies": 2,
+      "projectiles": 0,
+      "spritesShips": 3,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 3,
+      "enemies": 3,
+      "projectiles": 1,
+      "spritesShips": 4,
+      "spritesProjectiles": 1,
+      "effects": 1,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 4,
+      "enemies": 3,
+      "projectiles": 0,
+      "spritesShips": 4,
+      "spritesProjectiles": 0,
+      "effects": 6,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 5,
+      "enemies": 4,
+      "projectiles": 1,
+      "spritesShips": 5,
+      "spritesProjectiles": 1,
+      "effects": 9,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 6,
+      "enemies": 5,
+      "projectiles": 0,
+      "spritesShips": 6,
+      "spritesProjectiles": 0,
+      "effects": 4,
+      "score": 1,
+      "health": 92
+    },
+    {
+      "second": 7,
+      "enemies": 6,
+      "projectiles": 0,
+      "spritesShips": 7,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 92
+    },
+    {
+      "second": 8,
+      "enemies": 7,
+      "projectiles": 1,
+      "spritesShips": 8,
+      "spritesProjectiles": 1,
+      "effects": 12,
+      "score": 1,
+      "health": 84
+    },
+    {
+      "second": 9,
+      "enemies": 7,
+      "projectiles": 0,
+      "spritesShips": 8,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 2,
+      "health": 84
+    },
+    {
+      "second": 10,
+      "enemies": 7,
+      "projectiles": 3,
+      "spritesShips": 8,
+      "spritesProjectiles": 3,
+      "effects": 16,
+      "score": 3,
+      "health": 84
+    },
+    {
+      "second": 11,
+      "enemies": 8,
+      "projectiles": 1,
+      "spritesShips": 9,
+      "spritesProjectiles": 1,
+      "effects": 3,
+      "score": 3,
+      "health": 84
+    },
+    {
+      "second": 12,
+      "enemies": 7,
+      "projectiles": 3,
+      "spritesShips": 8,
+      "spritesProjectiles": 3,
+      "effects": 8,
+      "score": 4,
+      "health": 64
+    },
+    {
+      "second": 13,
+      "enemies": 7,
+      "projectiles": 0,
+      "spritesShips": 8,
+      "spritesProjectiles": 0,
+      "effects": 6,
+      "score": 5,
+      "health": 56
+    },
+    {
+      "second": 14,
+      "enemies": 7,
+      "projectiles": 0,
+      "spritesShips": 8,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 6,
+      "health": 56
+    },
+    {
+      "second": 15,
+      "enemies": 7,
+      "projectiles": 5,
+      "spritesShips": 8,
+      "spritesProjectiles": 5,
+      "effects": 15,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 16,
+      "enemies": 8,
+      "projectiles": 2,
+      "spritesShips": 9,
+      "spritesProjectiles": 2,
+      "effects": 9,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 17,
+      "enemies": 9,
+      "projectiles": 4,
+      "spritesShips": 10,
+      "spritesProjectiles": 4,
+      "effects": 1,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 18,
+      "enemies": 10,
+      "projectiles": 3,
+      "spritesShips": 11,
+      "spritesProjectiles": 3,
+      "effects": 4,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 19,
+      "enemies": 10,
+      "projectiles": 3,
+      "spritesShips": 11,
+      "spritesProjectiles": 3,
+      "effects": 7,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 20,
+      "enemies": 10,
+      "projectiles": 0,
+      "spritesShips": 11,
+      "spritesProjectiles": 0,
+      "effects": 8,
+      "score": 8,
+      "health": 4
+    },
+    {
+      "second": 21,
+      "enemies": 9,
+      "projectiles": 1,
+      "spritesShips": 10,
+      "spritesProjectiles": 1,
+      "effects": 13,
+      "score": 10,
+      "health": 4
+    }
+  ],
+  "cycles": [
+    {
+      "label": "menu baseline",
+      "jsHeapUsedMB": 8.01,
+      "jsHeapTotalMB": 8.44,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 1",
+      "inMatchHeapMB": 8.42,
+      "jsHeapUsedMB": 8.35,
+      "jsHeapTotalMB": 8.94,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 2",
+      "inMatchHeapMB": 8.71,
+      "jsHeapUsedMB": 8.53,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 3",
+      "inMatchHeapMB": 8.87,
+      "jsHeapUsedMB": 8.64,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 195,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 4",
+      "inMatchHeapMB": 9.07,
+      "jsHeapUsedMB": 8.89,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 195,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 5",
+      "inMatchHeapMB": 9.23,
+      "jsHeapUsedMB": 9,
+      "jsHeapTotalMB": 9.69,
+      "domNodes": 124,
+      "jsEventListeners": 192,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 6",
+      "inMatchHeapMB": 9.3,
+      "jsHeapUsedMB": 9.03,
+      "jsHeapTotalMB": 9.94,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 7",
+      "inMatchHeapMB": 9.37,
+      "jsHeapUsedMB": 9.12,
+      "jsHeapTotalMB": 9.94,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 8",
+      "inMatchHeapMB": 9.68,
+      "jsHeapUsedMB": 9.57,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 9",
+      "inMatchHeapMB": 9.9,
+      "jsHeapUsedMB": 9.63,
+      "jsHeapTotalMB": 10.19,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 10",
+      "inMatchHeapMB": 9.95,
+      "jsHeapUsedMB": 9.69,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 11",
+      "inMatchHeapMB": 10,
+      "jsHeapUsedMB": 9.71,
+      "jsHeapTotalMB": 10.19,
+      "domNodes": 124,
+      "jsEventListeners": 196,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 12",
+      "inMatchHeapMB": 10.01,
+      "jsHeapUsedMB": 9.72,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 194,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 13",
+      "inMatchHeapMB": 10.03,
+      "jsHeapUsedMB": 9.75,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 192,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 14",
+      "inMatchHeapMB": 10.05,
+      "jsHeapUsedMB": 9.76,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 193,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 15",
+      "inMatchHeapMB": 10.06,
+      "jsHeapUsedMB": 9.77,
+      "jsHeapTotalMB": 10.44,
+      "domNodes": 124,
+      "jsEventListeners": 193,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    }
+  ]
+}

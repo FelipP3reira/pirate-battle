@@ -1,0 +1,1914 @@
+{
+  "recordedAt": "2026-11-24T13:33:19.832Z",
+  "environment": {
+    "host": "Darwin 27.2.0 arm64",
+    "cpu": "Apple M1",
+    "cores": 8,
+    "memoryGB": 8,
+    "browser": "Chromium 159.0.8154.6 (Playwright, headless)",
+    "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "deviceScaleFactor": 1,
+    "build": "vite build --mode e2e (minified production bundle with test hooks enabled)"
+  },
+  "match": {
+    "sessionSeconds": 180,
+    "spawnSeconds": 10,
+    "seed": 1,
+    "input": "scripts/autopilot.mjs pressing real keys every 100 ms"
+  },
+  "result": {
+    "phase": "ended",
+    "elapsed": 180,
+    "score": 15,
+    "health": 12
+  },
+  "frames": {
+    "samples": 10798,
+    "meanIntervalMs": 16.668,
+    "averageFps": 60,
+    "p50IntervalMs": 16.7,
+    "p95IntervalMs": 16.7,
+    "p99IntervalMs": 16.8,
+    "maxIntervalMs": 33.4,
+    "framesOver20ms": 1,
+    "framesOver33ms": 0
+  },
+  "maxEntities": {
+    "enemies": 1,
+    "projectiles": 3,
+    "effects": 20
+  },
+  "timeline": [
+    {
+      "second": 0,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 1,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 2,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 3,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 4,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 5,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 6,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 7,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 8,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 9,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 10,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 11,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 12,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 0,
+      "health": 100
+    },
+    {
+      "second": 13,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 12,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 14,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 15,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 16,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 17,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 18,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 19,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 20,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 21,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 22,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 23,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 24,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 100
+    },
+    {
+      "second": 25,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 7,
+      "score": 1,
+      "health": 92
+    },
+    {
+      "second": 26,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 1,
+      "health": 92
+    },
+    {
+      "second": 27,
+      "enemies": 0,
+      "projectiles": 1,
+      "spritesShips": 1,
+      "spritesProjectiles": 1,
+      "effects": 7,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 28,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 29,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 30,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 31,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 32,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 33,
+      "enemies": 1,
+      "projectiles": 2,
+      "spritesShips": 2,
+      "spritesProjectiles": 2,
+      "effects": 7,
+      "score": 2,
+      "health": 92
+    },
+    {
+      "second": 34,
+      "enemies": 0,
+      "projectiles": 2,
+      "spritesShips": 1,
+      "spritesProjectiles": 2,
+      "effects": 12,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 35,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 3,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 36,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 37,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 38,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 39,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 40,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 41,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 42,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 1,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 43,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 3,
+      "health": 92
+    },
+    {
+      "second": 44,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 45,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 46,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 47,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 48,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 49,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 50,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 51,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 52,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 53,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 1,
+      "score": 3,
+      "health": 72
+    },
+    {
+      "second": 54,
+      "enemies": 1,
+      "projectiles": 2,
+      "spritesShips": 2,
+      "spritesProjectiles": 2,
+      "effects": 4,
+      "score": 3,
+      "health": 64
+    },
+    {
+      "second": 55,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 64
+    },
+    {
+      "second": 56,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 3,
+      "health": 64
+    },
+    {
+      "second": 57,
+      "enemies": 1,
+      "projectiles": 3,
+      "spritesShips": 2,
+      "spritesProjectiles": 3,
+      "effects": 3,
+      "score": 3,
+      "health": 64
+    },
+    {
+      "second": 58,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 3,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 59,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 60,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 61,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 62,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 2,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 63,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 1,
+      "score": 4,
+      "health": 56
+    },
+    {
+      "second": 64,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 4,
+      "health": 48
+    },
+    {
+      "second": 65,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 6,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 66,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 67,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 68,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 69,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 70,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 71,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 72,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 5,
+      "score": 5,
+      "health": 48
+    },
+    {
+      "second": 73,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 74,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 75,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 76,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 77,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 78,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 79,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 80,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 81,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 82,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 83,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 4,
+      "score": 6,
+      "health": 48
+    },
+    {
+      "second": 84,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 6,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 85,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 86,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 87,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 88,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 89,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 90,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 6,
+      "health": 28
+    },
+    {
+      "second": 91,
+      "enemies": 0,
+      "projectiles": 1,
+      "spritesShips": 1,
+      "spritesProjectiles": 1,
+      "effects": 14,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 92,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 93,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 94,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 95,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 96,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 97,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 98,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 99,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 100,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 101,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 102,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 103,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 7,
+      "health": 28
+    },
+    {
+      "second": 104,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 105,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 106,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 107,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 108,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 109,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 110,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 111,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 112,
+      "enemies": 1,
+      "projectiles": 2,
+      "spritesShips": 2,
+      "spritesProjectiles": 2,
+      "effects": 6,
+      "score": 8,
+      "health": 28
+    },
+    {
+      "second": 113,
+      "enemies": 0,
+      "projectiles": 2,
+      "spritesShips": 1,
+      "spritesProjectiles": 2,
+      "effects": 10,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 114,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 115,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 116,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 117,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 118,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 119,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 120,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 121,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 1,
+      "score": 9,
+      "health": 20
+    },
+    {
+      "second": 122,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 123,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 124,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 125,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 126,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 127,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 128,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 129,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 130,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 131,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 132,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 133,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 8,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 134,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 10,
+      "health": 20
+    },
+    {
+      "second": 135,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 136,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 137,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 138,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 139,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 140,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 141,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 142,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 143,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 20
+    },
+    {
+      "second": 144,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 20,
+      "score": 11,
+      "health": 12
+    },
+    {
+      "second": 145,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 11,
+      "health": 12
+    },
+    {
+      "second": 146,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 11,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 147,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 148,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 149,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 150,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 151,
+      "enemies": 1,
+      "projectiles": 2,
+      "spritesShips": 2,
+      "spritesProjectiles": 2,
+      "effects": 2,
+      "score": 12,
+      "health": 12
+    },
+    {
+      "second": 152,
+      "enemies": 0,
+      "projectiles": 2,
+      "spritesShips": 1,
+      "spritesProjectiles": 2,
+      "effects": 9,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 153,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 154,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 155,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 156,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 157,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 158,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 159,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 160,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 161,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 162,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 163,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 9,
+      "score": 13,
+      "health": 12
+    },
+    {
+      "second": 164,
+      "enemies": 0,
+      "projectiles": 2,
+      "spritesShips": 1,
+      "spritesProjectiles": 2,
+      "effects": 10,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 165,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 2,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 166,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 167,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 168,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 169,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 170,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 171,
+      "enemies": 1,
+      "projectiles": 0,
+      "spritesShips": 2,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 172,
+      "enemies": 1,
+      "projectiles": 1,
+      "spritesShips": 2,
+      "spritesProjectiles": 1,
+      "effects": 6,
+      "score": 14,
+      "health": 12
+    },
+    {
+      "second": 173,
+      "enemies": 0,
+      "projectiles": 2,
+      "spritesShips": 1,
+      "spritesProjectiles": 2,
+      "effects": 2,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 174,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 1,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 175,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 176,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 177,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 178,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 15,
+      "health": 12
+    },
+    {
+      "second": 179,
+      "enemies": 0,
+      "projectiles": 0,
+      "spritesShips": 1,
+      "spritesProjectiles": 0,
+      "effects": 0,
+      "score": 15,
+      "health": 12
+    }
+  ],
+  "cycles": [
+    {
+      "label": "menu baseline",
+      "jsHeapUsedMB": 8.22,
+      "jsHeapTotalMB": 8.94,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 1",
+      "inMatchHeapMB": 8.55,
+      "jsHeapUsedMB": 8.26,
+      "jsHeapTotalMB": 8.94,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 2",
+      "inMatchHeapMB": 8.69,
+      "jsHeapUsedMB": 8.4,
+      "jsHeapTotalMB": 8.94,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 3",
+      "inMatchHeapMB": 8.77,
+      "jsHeapUsedMB": 8.47,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 4",
+      "inMatchHeapMB": 8.93,
+      "jsHeapUsedMB": 8.64,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    },
+    {
+      "label": "after cycle 5",
+      "inMatchHeapMB": 9,
+      "jsHeapUsedMB": 8.73,
+      "jsHeapTotalMB": 9.19,
+      "domNodes": 124,
+      "jsEventListeners": 191,
+      "documents": 2,
+      "canvases": 0,
+      "activeMatch": false
+    }
+  ]
+}
