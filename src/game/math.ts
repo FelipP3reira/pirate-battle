@@ -36,9 +36,3 @@ export function approach(value: number, target: number, maxDelta: number): numbe
   if (value < target) return Math.min(target, value + maxDelta);
   return Math.max(target, value - maxDelta);
 }
-
-export function turnTowards(current: number, target: number, maxDelta: number): number {
-  const delta = wrapAngle(target - current);
-  if (Math.abs(delta) <= maxDelta) return wrapAngle(target);
-  return wrapAngle(current + Math.sign(delta) * maxDelta);
-}
