@@ -57,7 +57,7 @@ Data flows one way during a battle: input → `Simulation.advance` → events an
 
 | Key | Contents |
 | --- | --- |
-| `pirate-battle:settings:v1` | Validated Options (whole seconds within limits; invalid stored values fall back to defaults) |
+| `pirate-battle:settings:v1` | Validated Options: session time, spawn interval and difficulty (invalid stored values fall back to defaults) |
 | `pirate-battle:player:v1` | Generated player id and captain name |
 | `pirate-battle:matches:v1` | `lastResult`, the `pending` registration queue and recently saved ids |
 | `pirate-battle:mock-db:v1` | Records confirmed by the mock server |
@@ -92,8 +92,8 @@ Data flows one way during a battle: input → `Simulation.advance` → events an
 ## Balance decisions
 
 - **Defaults.** The arena (28 × 16 tiles of 64 px) fits the supplied tiles exactly and matches the proportions of `assets/sample.png`. Defaults follow the sample screens (120 s battles, 3 s spawn interval). Spawn interval limits of 1–10 s keep pacing readable while staying positive.
-- **Difficulty.** Shooter damage and fire rate were lowered after headless runs: a scripted player that aims and dodges (`scripts/autopilot.mjs`) averaged about 19 points but did not survive the full default 120 s match against an ever-growing fleet. It survived 180 s matches at 7–10 s spawn intervals in most seeds. The default is intentionally hard; dying early ends the match with its score.
-- **Enemy cap.** Concurrent enemies are capped at 12 so the arena stays readable on phones; spawns resume as soon as one is destroyed.
+- **Difficulty.** The player chooses Normal (default) or Hard in Options. Hard was tuned first. A scripted player that aims and dodges (`scripts/autopilot.mjs`) averaged about 19 points on Hard but did not survive the full 120 s match against an ever-growing fleet. Normal keeps the same weapons and enemy health; it raises player health to 130, softens Chaser rams and speed, slows and weakens Shooter fire and lowers the enemy cap. The preset is copied into the match snapshot and its `configKey`, so Normal and Hard results never share a ranking. With the same scripted player, Normal survives the default 120 s match in 20 of 30 seeds (about 35 points on average).
+- **Enemy cap.** Concurrent enemies are capped (8 on Normal, 12 on Hard) so the arena stays readable on phones; spawns resume as soon as one is destroyed.
 
 ## Limitations
 
