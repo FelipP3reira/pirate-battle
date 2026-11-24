@@ -65,6 +65,9 @@ export class GameSession {
   async mount(host: HTMLElement): Promise<boolean> {
     const bounds = host.getBoundingClientRect();
     const renderer = await GameRenderer.create(this.options.textures, this.simulation.arena, bounds.width, bounds.height);
+    // Pixi init is async. In Strict Mode (or if the player leaves quickly) the
+    // session can be disposed before this resolves, so throw the late app away
+    // instead of attaching a second canvas.
     if (this.disposed) {
       renderer.destroy();
       return false;
@@ -126,6 +129,7 @@ export class GameSession {
 
   resume(): void {
     if (this.snapshot.phase !== 'paused') return;
+    // Time spent paused must not turn into movement or extra shots on resume.
     this.simulation.discardPendingTime();
     audio.resume();
     audio.play('resume', 0.6);
@@ -182,6 +186,8 @@ export class GameSession {
   }
 
   private readonly tick = (ticker: Ticker): void => {
+    // Coming back from a hidden tab can report a huge delta; the simulation caps
+    // its own steps too, this just keeps effects from jumping.
     const seconds = Math.min(ticker.deltaMS, 250) / 1000;
     if (this.snapshot.phase === 'running') {
       this.frameIntervals.push(ticker.deltaMS);

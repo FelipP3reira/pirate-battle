@@ -291,6 +291,8 @@ export class GameRenderer {
       sprite.rotation = decoration.rotation;
       layer.addChild(sprite);
     }
+    // Islands never change, so bake every tile into one texture at 1:1. Drawing
+    // the tiles scaled each frame showed hairline seams between them.
     this.islandTexture = this.app.renderer.generateTexture({
       target: layer,
       frame: new Rectangle(0, 0, this.arena.width, this.arena.height),

@@ -96,6 +96,8 @@ export class InputController {
     const command = KEY_TO_COMMAND.get(event.code);
     if (!command) return;
     event.preventDefault();
+    // Ignore OS key repeat: a key held through the pause menu shouldn't count
+    // as pressed again after resume.
     if (event.repeat) return;
     this.add(command, `key:${event.code}`);
   };

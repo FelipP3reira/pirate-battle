@@ -156,6 +156,8 @@ export const handlers = [
     if (failed) return failed;
     if (!isMatchRecord(body)) return error(400, 'invalid_request', 'The battle record is incomplete.');
 
+    // matchId is the idempotency key: replaying the same match returns the stored
+    // record (200) instead of creating a second row; a different payload is a 409.
     const existing = findConfirmed(body.matchId);
     if (existing) {
       if (!sameSubmission(existing, body)) {
@@ -166,6 +168,8 @@ export const handlers = [
     }
 
     insertConfirmed(body);
+    // Lost acknowledgment: the record is already stored, but the client times out
+    // before hearing back and has to recover it through a retry.
     if (scenario === 'commit-then-timeout' && !state.lostAcknowledgmentUsed) {
       state.lostAcknowledgmentUsed = true;
       await delay(TIMEOUT_DELAY_MS);

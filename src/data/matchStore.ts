@@ -62,6 +62,8 @@ class MatchStore {
     this.emit();
   }
 
+  // Saved before any request goes out, so a refresh or a dead connection right
+  // after the match never loses the result.
   recordCompleted(record: MatchRecord): void {
     const pending = [...this.snapshot.pending.filter((item) => item.matchId !== record.matchId), record];
     this.commit({ ...this.snapshot, lastResult: record, pending });

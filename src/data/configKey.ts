@@ -18,6 +18,8 @@ function fnv1a(text: string): string {
   return hash.toString(16).padStart(8, '0');
 }
 
+// Hashes the whole config (difficulty and balance included), so the ranking only
+// compares matches that were played under exactly the same rules.
 export function configKeyFor(config: MatchConfig): string {
   return `r${config.balance.rulesVersion}-${config.sessionSeconds}s-${config.spawnSeconds}s-${fnv1a(canonical(config))}`;
 }

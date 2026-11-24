@@ -88,6 +88,7 @@ export function useMatchRegistration(): { register: (record: MatchRecord) => voi
     [mutate],
   );
 
+  // Anything still pending from a previous visit is retried once on startup.
   const recovered = useRef(false);
   useEffect(() => {
     if (recovered.current) return;
