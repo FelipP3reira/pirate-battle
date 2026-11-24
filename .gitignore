@@ -6,11 +6,18 @@ node_modules/
 
 # Build output
 dist/
+dist-e2e/
+
+# Test output
+playwright-report/
+test-results/
+blob-report/
 
 # Environment
 .env
 .env.*
 !.env.example
+!.env.e2e
 
 # Logs
 *.log
