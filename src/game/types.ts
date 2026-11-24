@@ -14,15 +14,6 @@ export interface PlayerCommands {
   fireRight: boolean;
 }
 
-export const IDLE_COMMANDS: Readonly<PlayerCommands> = Object.freeze({
-  forward: false,
-  turnLeft: false,
-  turnRight: false,
-  fireFront: false,
-  fireLeft: false,
-  fireRight: false,
-});
-
 export interface Ship {
   id: number;
   kind: ShipKind;

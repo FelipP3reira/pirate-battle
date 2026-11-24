@@ -1,5 +1,4 @@
-import type { Arena } from './arena';
-import { pointInsideCollider } from './arena';
+import { pointInsideCollider, type Arena } from './arena';
 import { capsuleFor, capsuleSeparation, capsulesOverlap, segmentCrossesCollider } from './collision';
 import { damageShip, destroyEnemy, fireFront } from './combat';
 import { angleTo, clamp, distance, wrapAngle } from './math';
@@ -8,6 +7,8 @@ import type { Ship } from './types';
 import type { World } from './world';
 
 const AVOIDANCE_OFFSETS = [0, 0.45, -0.45, 0.9, -0.9, 1.35, -1.35, 1.8, -1.8];
+const PROBE_MARGIN = 50;
+const PROBE_SECONDS = 0.6;
 
 function probeBlocked(arena: Arena, ship: Ship, angle: number, reach: number): boolean {
   const padding = ship.hull.hullRadius + 6;
@@ -24,8 +25,8 @@ function probeBlocked(arena: Arena, ship: Ship, angle: number, reach: number): b
   return false;
 }
 
-export function avoidObstacles(arena: Arena, ship: Ship, desired: number): number {
-  const reach = ship.hull.hullHalfLength + 50 + ship.speed * 0.6;
+function avoidObstacles(arena: Arena, ship: Ship, desired: number): number {
+  const reach = ship.hull.hullHalfLength + PROBE_MARGIN + ship.speed * PROBE_SECONDS;
   for (const offset of AVOIDANCE_OFFSETS) {
     const candidate = wrapAngle(desired + offset);
     if (!probeBlocked(arena, ship, candidate, reach)) return candidate;
@@ -33,7 +34,7 @@ export function avoidObstacles(arena: Arena, ship: Ship, desired: number): numbe
   return desired;
 }
 
-export function hasLineOfSight(arena: Arena, from: Ship, to: Ship): boolean {
+function hasLineOfSight(arena: Arena, from: Ship, to: Ship): boolean {
   return arena.islands.every((island) => !segmentCrossesCollider(from, to, island.collider));
 }
 
@@ -44,15 +45,14 @@ function turnInputTowards(ship: Ship, desired: number, dt: number): number {
 
 function updateChaser(world: World, chaser: Ship, dt: number): void {
   const { player, arena } = world;
-  const lead = 0.35;
+  const settings = world.config.balance.chaser;
   const target = {
-    x: player.x + Math.cos(player.angle) * player.speed * lead,
-    y: player.y + Math.sin(player.angle) * player.speed * lead,
+    x: player.x + Math.cos(player.angle) * player.speed * settings.leadSeconds,
+    y: player.y + Math.sin(player.angle) * player.speed * settings.leadSeconds,
   };
   const desired = avoidObstacles(arena, chaser, angleTo(chaser, target));
-  const turn = turnInputTowards(chaser, desired, dt);
-  const sharpness = Math.abs(wrapAngle(desired - chaser.angle));
-  moveShip(chaser, arena, turn, sharpness > 1.2 ? 0.6 : 1, dt);
+  const sharpTurn = Math.abs(wrapAngle(desired - chaser.angle)) > settings.sharpTurnAngle;
+  moveShip(chaser, arena, turnInputTowards(chaser, desired, dt), sharpTurn ? settings.sharpTurnThrottle : 1, dt);
 }
 
 function updateShooter(world: World, shooter: Ship, dt: number): void {
@@ -66,7 +66,7 @@ function updateShooter(world: World, shooter: Ship, dt: number): void {
     const desired = avoidObstacles(arena, shooter, bearing);
     moveShip(shooter, arena, turnInputTowards(shooter, desired, dt), 1, dt);
   } else {
-    const throttle = range < settings.preferredRange * 0.7 ? 0 : 0.3;
+    const throttle = range < settings.preferredRange * settings.backOffRatio ? 0 : settings.holdThrottle;
     moveShip(shooter, arena, turnInputTowards(shooter, bearing, dt), throttle, dt);
   }
 

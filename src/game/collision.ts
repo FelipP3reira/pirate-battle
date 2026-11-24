@@ -9,7 +9,7 @@ export interface Capsule {
   radius: number;
 }
 
-export interface Push {
+interface Push {
   x: number;
   y: number;
 }
@@ -20,15 +20,7 @@ export function capsuleFor(x: number, y: number, angle: number, halfLength: numb
   return { ax: x - dx, ay: y - dy, bx: x + dx, by: y + dy, radius };
 }
 
-export function closestOnSegment(px: number, py: number, ax: number, ay: number, bx: number, by: number): Vec2 {
-  const abx = bx - ax;
-  const aby = by - ay;
-  const lengthSquared = abx * abx + aby * aby;
-  const t = lengthSquared === 0 ? 0 : Math.max(0, Math.min(1, ((px - ax) * abx + (py - ay) * aby) / lengthSquared));
-  return { x: ax + abx * t, y: ay + aby * t };
-}
-
-export function segmentSegmentClosest(
+function segmentSegmentClosest(
   p1x: number,
   p1y: number,
   q1x: number,
