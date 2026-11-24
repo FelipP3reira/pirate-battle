@@ -122,9 +122,9 @@ export const DEFAULT_BALANCE: BalanceConfig = {
     hullRadius: 22,
     attackRange: 420,
     preferredRange: 300,
-    aimTolerance: 0.2,
+    aimTolerance: 0.15,
     cannon: {
-      cooldown: 2,
+      cooldown: 2.4,
       damage: 8,
       projectileSpeed: 400,
       range: 460,
