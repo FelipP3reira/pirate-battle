@@ -21,3 +21,6 @@ blob-report/
 
 # Logs
 *.log
+
+# Vite cache
+.vite/
