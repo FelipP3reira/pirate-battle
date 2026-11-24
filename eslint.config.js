@@ -4,7 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'dist-e2e', 'playwright-report', 'test-results', 'public/mockServiceWorker.js', 'node_modules'] },
+  { ignores: ['dist', 'dist-e2e', '.vite', 'playwright-report', 'test-results', 'public/mockServiceWorker.js', 'node_modules'] },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [js.configs.recommended, ...tseslint.configs.strictTypeChecked],

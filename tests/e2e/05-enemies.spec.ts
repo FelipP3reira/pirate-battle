@@ -35,6 +35,19 @@ test.describe('05 enemies', () => {
     expect((await observe(page)).player.health).toBe(80);
   });
 
+  test('normal difficulty softens the chaser ram', async ({ page }) => {
+    await useSettings(page, 120, 10, 'normal');
+    await openMenu(page);
+    await startMatch(page, {
+      seed: 8,
+      manualClock: true,
+      setup: { player: START, enemies: [{ kind: 'chaser', x: START.x + 380, y: START.y - 100, angle: Math.PI }] },
+    });
+    const rammed = await advanceUntil(page, (state) => state.enemies.length === 0, { step: 100, limit: 8000 });
+    expect(rammed.player.health).toBe(115);
+    expect(rammed.score).toBe(0);
+  });
+
   test('shooter closes to its range and fires on the player', async ({ page }) => {
     await useSettings(page, 120, 10);
     await openMenu(page);

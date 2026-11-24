@@ -50,10 +50,20 @@ export interface BalanceConfig {
   };
 }
 
+export type Difficulty = 'normal' | 'hard';
+
+export const DIFFICULTIES: Array<{ id: Difficulty; label: string; description: string }> = [
+  { id: 'normal', label: 'Normal', description: 'Sturdier hull, softer rams, slower enemy cannons, at most 8 enemies at once.' },
+  { id: 'hard', label: 'Hard', description: 'Faster chasers, harder hits, up to 12 enemies at once.' },
+];
+
 export interface MatchSettings {
   sessionSeconds: number;
   spawnSeconds: number;
+  difficulty: Difficulty;
 }
+
+export type NumericSetting = 'sessionSeconds' | 'spawnSeconds';
 
 export interface MatchConfig extends MatchSettings {
   balance: BalanceConfig;
@@ -65,7 +75,7 @@ export interface SettingLimit {
   step: number;
 }
 
-export const SETTINGS_LIMITS: Record<keyof MatchSettings, SettingLimit> = {
+export const SETTINGS_LIMITS: Record<NumericSetting, SettingLimit> = {
   sessionSeconds: { min: 60, max: 180, step: 10 },
   spawnSeconds: { min: 1, max: 10, step: 1 },
 };
@@ -73,9 +83,10 @@ export const SETTINGS_LIMITS: Record<keyof MatchSettings, SettingLimit> = {
 export const DEFAULT_SETTINGS: MatchSettings = {
   sessionSeconds: 120,
   spawnSeconds: 3,
+  difficulty: 'normal',
 };
 
-export const DEFAULT_BALANCE: BalanceConfig = {
+export const HARD_BALANCE: BalanceConfig = {
   rulesVersion: RULES_VERSION,
   player: {
     maxHealth: 100,
@@ -140,12 +151,43 @@ export const DEFAULT_BALANCE: BalanceConfig = {
   },
 };
 
-export function clampSetting(key: keyof MatchSettings, value: number): number {
+export const NORMAL_BALANCE: BalanceConfig = {
+  ...HARD_BALANCE,
+  player: {
+    ...HARD_BALANCE.player,
+    maxHealth: 130,
+  },
+  chaser: {
+    ...HARD_BALANCE.chaser,
+    maxSpeed: 125,
+    contactDamage: 15,
+  },
+  shooter: {
+    ...HARD_BALANCE.shooter,
+    aimTolerance: 0.12,
+    cannon: { ...HARD_BALANCE.shooter.cannon, cooldown: 2.8, damage: 6 },
+  },
+  spawn: {
+    ...HARD_BALANCE.spawn,
+    maxActiveEnemies: 8,
+  },
+};
+
+export const BALANCE_PRESETS: Record<Difficulty, BalanceConfig> = {
+  normal: NORMAL_BALANCE,
+  hard: HARD_BALANCE,
+};
+
+export function isDifficulty(value: unknown): value is Difficulty {
+  return value === 'normal' || value === 'hard';
+}
+
+export function clampSetting(key: NumericSetting, value: number): number {
   const limit = SETTINGS_LIMITS[key];
   return Math.min(limit.max, Math.max(limit.min, Math.round(value)));
 }
 
-export function validateSetting(key: keyof MatchSettings, value: number): string | null {
+export function validateSetting(key: NumericSetting, value: number): string | null {
   const limit = SETTINGS_LIMITS[key];
   if (!Number.isFinite(value) || !Number.isInteger(value)) {
     return 'Enter a whole number of seconds.';
@@ -156,10 +198,11 @@ export function validateSetting(key: keyof MatchSettings, value: number): string
   return null;
 }
 
-export function createMatchConfig(settings: MatchSettings, balance: BalanceConfig = DEFAULT_BALANCE): MatchConfig {
+export function createMatchConfig(settings: MatchSettings): MatchConfig {
   return structuredClone({
     sessionSeconds: settings.sessionSeconds,
     spawnSeconds: settings.spawnSeconds,
-    balance,
+    difficulty: settings.difficulty,
+    balance: BALANCE_PRESETS[settings.difficulty],
   });
 }

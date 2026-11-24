@@ -48,7 +48,7 @@ Movement and firing can be combined freely; the touch controls track every point
 
 ## Gameplay configuration
 
-All balance values live in [src/game/config.ts](src/game/config.ts) (`DEFAULT_BALANCE`). Systems read them from the match snapshot, so tuning never requires touching logic. Each match copies the full configuration when it starts; changing Options mid-battle only affects the next one.
+All balance values live in [src/game/config.ts](src/game/config.ts) (`NORMAL_BALANCE` and `HARD_BALANCE`). Systems read them from the match snapshot, so tuning never requires touching logic. Each match copies the full configuration when it starts; changing Options mid-battle only affects the next one.
 
 Options exposed to the player (persisted under `pirate-battle:settings:v1`):
 
@@ -56,8 +56,9 @@ Options exposed to the player (persisted under `pirate-battle:settings:v1`):
 | --- | --- | --- |
 | Game session time | 120 s | 60–180 s, whole seconds |
 | Enemy spawn time | 3 s | 1–10 s, whole seconds |
+| Difficulty | Normal | Normal or Hard |
 
-Balance (world units are pixels of the 1792 × 1024 arena, time in seconds):
+Balance (world units are pixels of the 1792 × 1024 arena, time in seconds). Values are for **Hard**; **Normal** changes only the entries listed after the table:
 
 | Entity | Values |
 | --- | --- |
@@ -67,6 +68,8 @@ Balance (world units are pixels of the 1792 × 1024 arena, time in seconds):
 | Chaser | 40 health, 140 speed, 1.9 rad/s turn, 20 ramming damage, explodes on impact (no point) |
 | Shooter | 60 health, 105 speed, 1.6 rad/s turn, holds at 300, fires within 420 when aimed within 0.15 rad, 8 damage, 2.4 s cooldown |
 | Spawns | First two are one Chaser then one Shooter; afterwards 55 % Chaser / 45 % Shooter. Spawn points sit on the arena rim, at least 520 from the player and 110 from other ships. At most 12 enemies alive at once. |
+
+**Normal** differs from Hard only here: player health 130; Chaser speed 125 and ramming damage 15; Shooter damage 6, cooldown 2.8 s and aim tolerance 0.12 rad; at most 8 enemies alive at once. The difficulty is part of the match configuration, so each difficulty has its own ranking.
 
 Each enemy destroyed by the player's cannons scores one point.
 

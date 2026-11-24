@@ -49,9 +49,19 @@ test.describe('01 options', () => {
     await expect(page.getByRole('spinbutton', { name: 'Game session time' })).toHaveValue('160');
     await expect(page.getByRole('spinbutton', { name: 'Enemy spawn time' })).toHaveValue('9');
 
+    const normal = page.getByRole('radio', { name: 'Normal' });
+    const hard = page.getByRole('radio', { name: 'Hard' });
+    await expect(normal).toHaveAttribute('aria-checked', 'true');
+    await normal.focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(hard).toHaveAttribute('aria-checked', 'true');
+    await expect(hard).toBeFocused();
+    await page.reload();
+    await expect(page.getByRole('radio', { name: 'Hard' })).toHaveAttribute('aria-checked', 'true');
+
     await page.getByRole('button', { name: 'Main Menu' }).click();
     await page.getByRole('button', { name: 'Ranking' }).click();
-    await expect(page.getByText('160 second battles · 9 second spawn interval', { exact: false })).toBeVisible();
+    await expect(page.getByText('hard · 160 second battles · 9 second spawn interval', { exact: false })).toBeVisible();
     expectNoConsoleErrors(consoleErrors);
   });
 });
