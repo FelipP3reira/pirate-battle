@@ -424,6 +424,13 @@ kbd {
   color: var(--danger);
 }
 
+.difficulty {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(20 * var(--u));
+}
+
 .options .panel__content {
   justify-content: center;
   min-height: calc(560 * var(--u));

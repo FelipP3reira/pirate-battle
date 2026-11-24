@@ -47,8 +47,9 @@ function buildRecords(seed: number, count: number, settings: MatchSettings, pref
 export function defaultFixtures(): MatchRecord[] {
   return [
     ...buildRecords(7, 13, DEFAULT_SETTINGS, 'seed-default'),
-    ...buildRecords(11, 9, { sessionSeconds: 60, spawnSeconds: 2 }, 'seed-short'),
-    ...buildRecords(13, 9, { sessionSeconds: 180, spawnSeconds: 4 }, 'seed-long'),
+    ...buildRecords(5, 8, { ...DEFAULT_SETTINGS, difficulty: 'hard' }, 'seed-hard'),
+    ...buildRecords(11, 9, { sessionSeconds: 60, spawnSeconds: 2, difficulty: 'normal' }, 'seed-short'),
+    ...buildRecords(13, 9, { sessionSeconds: 180, spawnSeconds: 4, difficulty: 'normal' }, 'seed-long'),
   ];
 }
 

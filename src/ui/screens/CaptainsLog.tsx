@@ -92,7 +92,7 @@ function RankingTable({ configKey, settings, player }: { configKey: string; sett
   return (
     <div className="log-body" id="log-panel-ranking" role="tabpanel" aria-labelledby="log-tab-ranking">
       <p className="log-subtitle">
-        {settings.sessionSeconds} second battles · {settings.spawnSeconds} second spawn interval
+        {settings.difficulty} · {settings.sessionSeconds} second battles · {settings.spawnSeconds} second spawn interval
       </p>
       <RefreshStatus query={query} label="ranking" />
       <TableState query={query} emptyText="No battles in this ranking yet. Be the first to set sail." label="ranking">

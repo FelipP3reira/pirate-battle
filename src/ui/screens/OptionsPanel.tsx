@@ -1,8 +1,8 @@
 import { useId, useState } from 'react';
-import { SETTINGS_LIMITS, validateSetting, type MatchSettings } from '../../game/config';
+import { DIFFICULTIES, SETTINGS_LIMITS, validateSetting, type Difficulty, type MatchSettings, type NumericSetting } from '../../game/config';
 import { GameButton, Panel, RoundButton, useHeadingFocus } from '../components';
 
-const FIELDS: Array<{ key: keyof MatchSettings; label: string }> = [
+const FIELDS: Array<{ key: NumericSetting; label: string }> = [
   { key: 'sessionSeconds', label: 'Game session time' },
   { key: 'spawnSeconds', label: 'Enemy spawn time' },
 ];
@@ -81,6 +81,47 @@ function SettingStepper({
   );
 }
 
+function DifficultyPicker({ value, onSelect }: { value: Difficulty; onSelect: (difficulty: Difficulty) => void }) {
+  const current = DIFFICULTIES.find((item) => item.id === value);
+  const select = (difficulty: Difficulty) => {
+    onSelect(difficulty);
+    window.requestAnimationFrame(() => document.getElementById(`difficulty-${difficulty}`)?.focus());
+  };
+  return (
+    <div className="setting">
+      <span className="setting__label" id="difficulty-label">
+        Difficulty
+      </span>
+      <div className="difficulty" role="radiogroup" aria-labelledby="difficulty-label" aria-describedby="difficulty-hint">
+        {DIFFICULTIES.map((item, index) => (
+          <GameButton
+            key={item.id}
+            id={`difficulty-${item.id}`}
+            role="radio"
+            aria-checked={item.id === value}
+            tabIndex={item.id === value ? 0 : -1}
+            variant={item.id === value ? 'primary' : 'secondary'}
+            size="small"
+            onClick={() => select(item.id)}
+            onKeyDown={(event) => {
+              if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+              event.preventDefault();
+              const step = event.key === 'ArrowRight' ? 1 : -1;
+              const next = DIFFICULTIES[(index + step + DIFFICULTIES.length) % DIFFICULTIES.length];
+              if (next) select(next.id);
+            }}
+          >
+            {item.label}
+          </GameButton>
+        ))}
+      </div>
+      <p id="difficulty-hint" className="setting__hint">
+        {current?.description}
+      </p>
+    </div>
+  );
+}
+
 export function OptionsPanel({
   settings,
   onChange,
@@ -96,7 +137,7 @@ export function OptionsPanel({
 }) {
   const headingRef = useHeadingFocus<HTMLHeadingElement>();
   const [status, setStatus] = useState('');
-  const save = (key: keyof MatchSettings, value: number) => {
+  const save = (key: keyof MatchSettings, value: number | Difficulty) => {
     const saved = onChange({ ...settings, [key]: value });
     setStatus(saved ? 'Settings saved.' : 'Settings could not be saved on this device.');
     return saved;
@@ -109,6 +150,7 @@ export function OptionsPanel({
       {FIELDS.map((field) => (
         <SettingStepper key={field.key} field={field} value={settings[field.key]} onCommit={(value) => save(field.key, value)} />
       ))}
+      <DifficultyPicker value={settings.difficulty} onSelect={(difficulty) => save('difficulty', difficulty)} />
       <p className="options__status" role="status">
         {status}
         {note ? ` ${note}` : ''}
