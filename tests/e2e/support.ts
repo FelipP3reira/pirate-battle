@@ -38,8 +38,13 @@ export async function seedStorage(page: Page, values: Record<string, unknown>): 
   }, values);
 }
 
-export async function useSettings(page: Page, sessionSeconds: number, spawnSeconds: number): Promise<void> {
-  await seedStorage(page, { 'pirate-battle:settings:v1': { sessionSeconds, spawnSeconds } });
+export async function useSettings(
+  page: Page,
+  sessionSeconds: number,
+  spawnSeconds: number,
+  difficulty: 'normal' | 'hard' = 'hard',
+): Promise<void> {
+  await seedStorage(page, { 'pirate-battle:settings:v1': { sessionSeconds, spawnSeconds, difficulty } });
 }
 
 export async function openMenu(page: Page, path = '/'): Promise<void> {
