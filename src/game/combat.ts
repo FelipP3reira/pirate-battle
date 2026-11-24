@@ -115,6 +115,7 @@ export function updateProjectiles(world: World, dt: number): void {
         if (sweptPointHitsCapsule(from, to, projectile.radius, hull)) {
           const impact = capsuleOverlapPoint(from, to, hull);
           if (damageShip(world, enemy, projectile.damage, 'player', impact.x, impact.y)) destroyEnemy(world, enemy, 'projectile');
+          // Stop at the first ship hit so one cannonball never damages twice.
           consumed = true;
           break;
         }

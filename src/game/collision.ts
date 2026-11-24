@@ -106,6 +106,8 @@ export function capsuleSeparation(first: Capsule, second: Capsule): Push | null 
   return { x: (dx / gap) * overlap, y: (dy / gap) * overlap };
 }
 
+// Projectiles cover ~9 px per step, so checking only the end position could
+// let them skip through a hull. Testing the whole segment travelled avoids that.
 export function sweptPointHitsCapsule(from: Vec2, to: Vec2, pointRadius: number, capsule: Capsule): boolean {
   const { a, b } = segmentSegmentClosest(from.x, from.y, to.x, to.y, capsule.ax, capsule.ay, capsule.bx, capsule.by);
   return Math.hypot(a.x - b.x, a.y - b.y) < capsule.radius + pointRadius;

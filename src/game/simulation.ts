@@ -8,7 +8,11 @@ import { createShip, SpawnDirector } from './spawning';
 import type { GameEvent, MatchPhase, MatchResult, PlayerCommands, Projectile, Ship, SimulationSetup } from './types';
 import type { World } from './world';
 
+// Rules always run at 60 Hz no matter the display refresh rate, which keeps
+// matches reproducible (same inputs + same seed = same match).
 export const FIXED_STEP = 1 / 60;
+// After a long stall (tab throttled, GC pause) we drop the backlog instead of
+// trying to catch up, otherwise every frame gets slower than the last.
 const MAX_STEPS_PER_ADVANCE = 15;
 
 export class Simulation implements World {
@@ -121,9 +125,12 @@ export class Simulation implements World {
     resolveShipContacts(this);
     updateProjectiles(this, dt);
 
+    // Derived from the step count on purpose: summing 1/60 thousands of times
+    // drifts and the match could end one step late.
     this.elapsed = Math.min(this.duration, this.steps * dt);
     if (player.health > 0 && this.elapsed < this.duration) this.spawner.update(this);
 
+    // Death wins a tie with the clock: sinking on the last step is a defeat.
     if (player.health <= 0) this.finish('destroyed');
     else if (this.elapsed >= this.duration) this.finish('time-up');
     return this.result !== null;
