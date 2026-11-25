@@ -12,7 +12,10 @@ const baseURL = process.env.PROFILE_URL ?? 'http://localhost:4180';
 const matchSeconds = Number(process.env.PROFILE_SECONDS ?? 180);
 const spawnSeconds = Number(process.env.PROFILE_SPAWN ?? 5);
 const seed = Number(process.env.PROFILE_SEED ?? 27);
-const viewport = { width: 1280, height: 720 };
+const difficulty = process.env.PROFILE_DIFFICULTY ?? 'normal';
+const minActiveSeconds = Number(process.env.PROFILE_MIN_ACTIVE ?? 0);
+const viewport = { width: Number(process.env.PROFILE_WIDTH ?? 1280), height: Number(process.env.PROFILE_HEIGHT ?? 720) };
+const deviceScaleFactor = Number(process.env.PROFILE_DPR ?? 1);
 const KEYS = { forward: 'KeyW', turnLeft: 'KeyA', turnRight: 'KeyD', fireFront: 'Space', fireLeft: 'KeyQ', fireRight: 'KeyE' };
 
 async function serverUp() {
@@ -104,7 +107,7 @@ async function main() {
   const server = await ensureServer();
   mkdirSync(outDir, { recursive: true });
   const browser = await chromium.launch({ args: ['--use-angle=metal', '--ignore-gpu-blocklist', '--enable-gpu'] });
-  const context = await browser.newContext({ viewport, deviceScaleFactor: 1 });
+  const context = await browser.newContext({ viewport, deviceScaleFactor });
   const page = await context.newPage();
   const client = await context.newCDPSession(page);
   await client.send('Performance.enable');
@@ -116,42 +119,53 @@ async function main() {
   });
 
   await page.addInitScript(
-    ([session, interval]) => {
+    ([session, interval, level]) => {
       if (sessionStorage.getItem('profile-seeded')) return;
       sessionStorage.setItem('profile-seeded', '1');
-      localStorage.setItem('pirate-battle:settings:v1', JSON.stringify({ sessionSeconds: session, spawnSeconds: interval }));
+      localStorage.setItem('pirate-battle:settings:v1', JSON.stringify({ sessionSeconds: session, spawnSeconds: interval, difficulty: level }));
     },
-    [matchSeconds, spawnSeconds],
+    [matchSeconds, spawnSeconds, difficulty],
   );
   await page.goto(baseURL);
   await page.getByRole('heading', { name: 'Pirate Battle' }).waitFor();
 
-  await page.evaluate((value) => window.__pirateBattle.configureNextMatch({ seed: value }), seed);
-  await page.getByRole('button', { name: 'Play', exact: true }).click();
-  await page.getByRole('button', { name: 'Pause' }).waitFor();
-  await page.waitForFunction(() => window.__pirateBattle.observe()?.phase === 'running');
-  await page.evaluate(() => window.__pirateBattle.resetFrameSamples());
-
+  const name = process.env.PROFILE_NAME ?? `session-${matchSeconds}s-spawn-${spawnSeconds}s`;
   const timeline = [];
-  await drive(page, matchSeconds, (state) => {
-    timeline.push({
-      second: Math.floor(state.elapsed),
-      enemies: state.enemies.length,
-      projectiles: state.projectiles.length,
-      spritesShips: state.display?.ships ?? null,
-      spritesProjectiles: state.display?.projectiles ?? null,
-      effects: state.display?.effects ?? null,
-      score: state.score,
-      health: state.player.health,
+  const intervals = [];
+  const matches = [];
+  let activeSeconds = 0;
+  let final = null;
+  for (let index = 0; index === 0 || activeSeconds < minActiveSeconds; index += 1) {
+    const matchSeed = seed + index;
+    await page.evaluate((value) => window.__pirateBattle.configureNextMatch({ seed: value }), matchSeed);
+    await page.getByRole('button', { name: 'Play', exact: true }).click();
+    await page.getByRole('button', { name: 'Pause' }).waitFor();
+    await page.waitForFunction(() => window.__pirateBattle.observe()?.phase === 'running');
+    await page.evaluate(() => window.__pirateBattle.resetFrameSamples());
+    await drive(page, matchSeconds, (state) => {
+      timeline.push({
+        match: index + 1,
+        second: Math.floor(state.elapsed),
+        enemies: state.enemies.length,
+        projectiles: state.projectiles.length,
+        spritesShips: state.display?.ships ?? null,
+        spritesProjectiles: state.display?.projectiles ?? null,
+        effects: state.display?.effects ?? null,
+        score: state.score,
+        health: state.player.health,
+      });
     });
-  });
-  const final = await page.evaluate(() => window.__pirateBattle.observe());
-  const intervals = await page.evaluate(() => window.__pirateBattle.frameSamples());
-  await page.screenshot({ path: resolve(outDir, `${process.env.PROFILE_NAME ?? `session-${matchSeconds}s-spawn-${spawnSeconds}s`}-end.png`) });
-
-  await page.waitForURL(/#\/result/, { timeout: 10_000 }).catch(() => undefined);
-  await page.getByRole('button', { name: 'Main Menu' }).click();
-  await page.getByRole('heading', { name: 'Pirate Battle' }).waitFor();
+    final = await page.evaluate(() => window.__pirateBattle.observe());
+    intervals.push(...(await page.evaluate(() => window.__pirateBattle.frameSamples())));
+    if (index === 0) await page.screenshot({ path: resolve(outDir, `${name}-end.png`) });
+    if (final) {
+      activeSeconds += final.elapsed;
+      matches.push({ seed: matchSeed, phase: final.simulationPhase, elapsed: final.elapsed, score: final.score, health: final.player.health });
+    }
+    await page.waitForURL(/#\/result/, { timeout: 10_000 }).catch(() => undefined);
+    await page.getByRole('button', { name: 'Main Menu' }).click();
+    await page.getByRole('heading', { name: 'Pirate Battle' }).waitFor();
+  }
 
   const cycles = [];
   cycles.push({ label: 'menu baseline', ...(await metrics(page, client)) });
@@ -184,11 +198,12 @@ async function main() {
       browser: `Chromium ${version} (Playwright, headless)`,
       gpuRenderer: gpu,
       viewport,
-      deviceScaleFactor: 1,
+      deviceScaleFactor,
       build: 'vite build --mode e2e (minified production bundle with test hooks enabled)',
     },
-    match: { sessionSeconds: matchSeconds, spawnSeconds, seed, input: 'scripts/autopilot.mjs pressing real keys every 100 ms' },
-    result: final ? { phase: final.simulationPhase, elapsed: final.elapsed, score: final.score, health: final.player.health } : null,
+    match: { sessionSeconds: matchSeconds, spawnSeconds, difficulty, seed, input: 'scripts/autopilot.mjs pressing real keys every 100 ms' },
+    activeSeconds: Number(activeSeconds.toFixed(3)),
+    matches,
     frames: stats(intervals),
     maxEntities: {
       enemies: Math.max(...timeline.map((row) => row.enemies)),
@@ -198,10 +213,9 @@ async function main() {
     timeline,
     cycles,
   };
-  const name = process.env.PROFILE_NAME ?? `session-${matchSeconds}s-spawn-${spawnSeconds}s`;
   writeFileSync(resolve(outDir, `${name}.json`), JSON.stringify(report, null, 2));
   writeFileSync(resolve(outDir, `${name}-frame-intervals.json`), JSON.stringify(intervals));
-  console.log(JSON.stringify({ result: report.result, frames: report.frames, maxEntities: report.maxEntities, cycles }, null, 2));
+  console.log(JSON.stringify({ activeSeconds: report.activeSeconds, matches, frames: report.frames, maxEntities: report.maxEntities, cycles }, null, 2));
   await browser.close();
   server?.kill();
 }
