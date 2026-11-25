@@ -44,7 +44,7 @@ function TableState<T>({
   if (query.isPending) {
     return (
       <p className="log-state" role="status">
-        Loading {label}…
+        Loading {label}...
       </p>
     );
   }
@@ -72,7 +72,7 @@ function TableState<T>({
 
 function RefreshStatus<T>({ query, label }: { query: QueryView<T>; label: string }) {
   let message = '';
-  if (query.isFetching && query.data) message = `Updating ${label}…`;
+  if (query.isFetching && query.data) message = `Updating ${label}...`;
   else if (query.isError && query.data) message = `Showing saved ${label}. Refresh failed: ${query.error?.message ?? ''}`;
   return (
     <p className={`log-refresh ${query.isError ? 'log-refresh--error' : ''}`} role="status">
@@ -198,7 +198,7 @@ export function CaptainsLog({
   return (
     <Panel wide labelledBy="log-title" className="log">
       <h1 id="log-title" className="panel-title" tabIndex={-1} ref={headingRef}>
-        Captain&rsquo;s Log
+        Captain's Log
       </h1>
       <div className="log-tabs" role="tablist" aria-label="Captain's log">
         {tabs.map((item) => (

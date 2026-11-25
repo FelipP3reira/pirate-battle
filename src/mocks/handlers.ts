@@ -68,7 +68,7 @@ function failure(scenario: ScenarioId, resource: 'ranking' | 'history' | 'matche
         ? error(422, 'invalid_request', 'The battle record was rejected.')
         : error(400, 'invalid_request', 'The request parameters were rejected.');
     case 'server-error':
-      return error(503, 'unavailable', 'The captain’s log is temporarily unavailable.');
+      return error(503, 'unavailable', "The captain's log is temporarily unavailable.");
     case 'ranking-down':
       return resource === 'ranking' ? error(500, 'internal', 'Ranking could not be loaded.') : null;
     case 'history-down':

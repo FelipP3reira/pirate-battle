@@ -7,14 +7,14 @@ function RegistrationLine({ state, onRetry }: { state: RegistrationState; onRetr
   if (state.status === 'saved') {
     return (
       <p className="registration registration--saved" role="status">
-        Saved to the Captain&rsquo;s Log.
+        Saved to the Captain's Log.
       </p>
     );
   }
   if (state.status === 'saving') {
     return (
       <p className="registration" role="status">
-        Saving to the Captain&rsquo;s Log…
+        Saving to the Captain's Log...
       </p>
     );
   }

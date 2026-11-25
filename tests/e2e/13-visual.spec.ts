@@ -31,7 +31,7 @@ test.describe('visual regression', () => {
   test('result screen', async ({ page }) => {
     await openMenu(page);
     await finishByRamming(page);
-    await expect(page.getByText('Saved to the Captain’s Log.')).toBeVisible();
+    await expect(page.getByText("Saved to the Captain's Log.")).toBeVisible();
     await expect(page).toHaveScreenshot('result.png');
   });
 });

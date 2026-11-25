@@ -6,8 +6,8 @@ test.describe('12 retries and stale responses', () => {
     await page.goto('/?scenario=commit-then-timeout');
     await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();
     await finishByRamming(page);
-    await expect(page.getByText('Saving to the Captain’s Log…')).toBeVisible();
-    await expect(page.getByText('Saved to the Captain’s Log.')).toBeVisible({ timeout: 20_000 });
+    await expect(page.getByText("Saving to the Captain's Log...")).toBeVisible();
+    await expect(page.getByText("Saved to the Captain's Log.")).toBeVisible({ timeout: 20_000 });
     const matchId = await page.evaluate(
       () => (JSON.parse(localStorage.getItem('pirate-battle:matches:v1') ?? '{}') as { lastResult: { matchId: string } }).lastResult.matchId,
     );
@@ -35,7 +35,7 @@ test.describe('12 retries and stale responses', () => {
     await retry.click();
     await retry.click({ timeout: 1000 }).catch(() => undefined);
     await retry.click({ timeout: 1000 }).catch(() => undefined);
-    await expect(page.getByText('Saved to the Captain’s Log.')).toBeVisible();
+    await expect(page.getByText("Saved to the Captain's Log.")).toBeVisible();
     const stored = await page.evaluate(
       () => (JSON.parse(localStorage.getItem('pirate-battle:mock-db:v1') ?? '{"confirmed":[]}') as { confirmed: unknown[] }).confirmed,
     );

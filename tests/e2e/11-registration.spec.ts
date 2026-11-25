@@ -17,7 +17,7 @@ test.describe('11 registration', () => {
     await page.getByRole('button', { name: 'Main Menu' }).click();
 
     await finishByRamming(page);
-    await expect(page.getByText('Saved to the Captain’s Log.')).toBeVisible();
+    await expect(page.getByText("Saved to the Captain's Log.")).toBeVisible();
     const matchId = await lastMatchId(page);
     await page.getByRole('button', { name: 'Main Menu' }).click();
     await page.getByRole('button', { name: 'Match History' }).click();
@@ -50,7 +50,7 @@ test.describe('11 registration', () => {
     await page.getByLabel('Mock API behavior').selectOption('normal');
     await page.getByRole('button', { name: 'Close' }).click();
     await page.goto('/#/result');
-    await expect(page.getByText('Saved to the Captain’s Log.')).toBeVisible();
+    await expect(page.getByText("Saved to the Captain's Log.")).toBeVisible();
 
     await page.getByRole('button', { name: 'Main Menu' }).click();
     await expect(page.getByText('1 battle is waiting to be saved.')).toHaveCount(0);
