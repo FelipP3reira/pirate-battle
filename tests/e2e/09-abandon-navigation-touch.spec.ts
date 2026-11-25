@@ -135,13 +135,12 @@ test.describe('09 abandonment, navigation and touch', () => {
       expect(v.offsetX * 2 + 1792 * v.scale).toBeLessThanOrEqual(viewport.width + 1);
       expect(v.offsetY * 2 + 1024 * v.scale).toBeLessThanOrEqual(viewport.height + 1);
     };
-    await check();
+    await expect(check).toPass();
     await page.setViewportSize({ width: 412, height: 839 });
-    await page.waitForTimeout(300);
-    await check();
+    await expect(check).toPass();
     await expect(page.getByText('Rotate to landscape for the widest view.')).toBeVisible();
     await page.setViewportSize({ width: 839, height: 412 });
     await waitForCombat(page);
-    await check();
+    await expect(check).toPass();
   });
 });
