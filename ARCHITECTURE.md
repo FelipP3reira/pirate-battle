@@ -29,15 +29,16 @@ Data flows one way during a battle: input → `Simulation.advance` → events an
 
 - Ships move forward only. Turning changes heading at `turnRate`, and speed approaches its target using acceleration or deceleration.
 - **Hull shape.** Each hull is a capsule: a segment of ±`hullHalfLength` along the heading with radius `hullRadius`, which follows the elongated sprite better than a single circle.
-- **Islands.** Each island collider is a rounded rectangle inset from its tiles. Three circles along the hull (bow, center, stern) are pushed out of every collider (up to 3 passes), and speed is capped while scraping a coast. The arena edge is enforced the same way, so ships can never leave the visible arena.
+- **Islands.** Each island collider is a rounded rectangle inset from its tiles. Three circles along the hull (bow, center, stern) are pushed out of every collider (up to `COLLISION_PASSES` = 3 passes, because leaving one island can push the hull into a neighbour), and speed is capped at `maxSpeed × coastSpeedRatio` while scraping a coast. The arena edge is enforced the same way, so ships can never leave the visible arena.
 - **Ship contacts.** A Chaser touching the player applies its ramming damage once, is destroyed and scores nothing. Other overlapping ships are pushed apart, then re-resolved against islands.
-- **Projectiles.** Each step tests a swept segment against ship capsules, so fast shots cannot tunnel. Player shots only hit enemies and enemy shots only hit the player. A shot is removed on its first hit, on an island, outside the arena or when its range is used up. Destroyed enemies leave the entity list immediately, so they stop moving, firing and colliding.
+- **Projectiles.** Each step tests a swept segment against ship capsules, so fast shots cannot tunnel. Player shots only hit enemies and enemy shots only hit the player. A shot is removed on its first hit, on an island, outside the arena or when its range is used up. Destroyed enemies leave the entity list immediately, so they stop moving, firing and colliding. Enemy shots still in the air when their ship sinks are removed too (with a splash), so a destroyed enemy can never deal damage afterwards.
 
 ## Enemy behavior
 
-- **Chaser.** Steers towards the player's predicted position (0.35 s lead) and slows on sharp turns.
-- **Shooter.** Approaches until it is within its preferred range and has line of sight, then slows and turns to face the player. It fires its bow cannon only when the target is in range, aligned within `aimTolerance` and not behind an island.
-- **Avoidance.** Both types probe ahead for islands and the arena edge and try alternative headings (±0.45 rad steps). Collision resolution is the final guarantee.
+- **Chaser.** Steers towards the player's predicted position `leadSeconds` (0.35 s) ahead; chasing the current position makes it trail behind and circle. When the turn it needs is sharper than `sharpTurnAngle` (1.2 rad) it drops to `sharpTurnThrottle` (60 %) speed.
+- **Shooter.** Approaches until it is within `preferredRange` (300) and has line of sight, then holds at `holdThrottle` (30 %) speed and stops below `backOffRatio` (70 %) of that range, always turning to face the player. It fires its bow cannon only when the target is in range, aligned within `aimTolerance` and not behind an island.
+- **Avoidance.** Both types probe two points ahead (`hullHalfLength + PROBE_MARGIN + speed × PROBE_SECONDS`) for islands and the arena edge and try the alternative headings in `AVOIDANCE_OFFSETS` (±0.45 rad steps). When every heading is blocked they keep going and collision resolution slides them along the coast.
+- **Tuning lives in the config.** Every value above that changes how the game plays (lead, turn thresholds, hold speeds, coast speed) is part of `BalanceConfig`, so rebalancing never touches the systems. Only the navigation heuristics (`COLLISION_PASSES`, `AVOIDANCE_OFFSETS`, `PROBE_MARGIN`, `PROBE_SECONDS`) are named constants in code.
 - **Spawns.** Enemies spawn every `spawnSeconds` from rim points that are at least 520 from the player and clear of other ships. The opening sequence (Chaser, then Shooter) guarantees both types in a standard match. When all points are blocked or 12 enemies are alive, the spawn waits and retries without building a burst.
 
 ## React and Pixi integration
@@ -93,11 +94,11 @@ Data flows one way during a battle: input → `Simulation.advance` → events an
 
 - **Defaults.** The arena (28 × 16 tiles of 64 px) fits the supplied tiles exactly and matches the proportions of `assets/sample.png`. Defaults follow the sample screens (120 s battles, 3 s spawn interval). Spawn interval limits of 1–10 s keep pacing readable while staying positive.
 - **Difficulty.** The player chooses Normal (default) or Hard in Options. Hard was tuned first. A scripted player that aims and dodges (`scripts/autopilot.mjs`) averaged about 19 points on Hard but did not survive the full 120 s match against an ever-growing fleet. Normal keeps the same weapons and enemy health; it raises player health to 130, softens Chaser rams and speed, slows and weakens Shooter fire and lowers the enemy cap. The preset is copied into the match snapshot and its `configKey`, so Normal and Hard results never share a ranking. With the same scripted player, Normal survives the default 120 s match in 20 of 30 seeds (about 35 points on average).
-- **Enemy cap.** Concurrent enemies are capped (8 on Normal, 12 on Hard) so the arena stays readable on phones; spawns resume as soon as one is destroyed.
+- **Enemy cap.** Concurrent enemies are capped (8 on Normal, 12 on Hard) so the arena stays readable on phones and frame time stays flat; spawns resume as soon as one is destroyed. This is a deliberate reading of "enemies spawn every configured interval": the interval is kept while there is room, and with a 1 s interval on Hard the cap is reached within seconds. The sustained stress profile held 60 FPS with the cap reached.
 
 ## Limitations
 
 - Islands are axis-aligned blocks taken from the supplied tile set. The grass block shows the faint seams present in the source art.
 - Enemy avoidance is local (probe-based), so a ship can briefly scrape a coast before sliding around it.
 - Visual baselines are platform-dependent because of system fonts.
-- Profiling ran on a single machine (see `reports/profiling/`). Lower-end phones were not measured.
+- Profiling ran on a single machine (see `reports/profiling/`). Lower-end phones were not measured. The heavy-load evidence (190 s at 6 enemies on average, cap reached, no frame over 16.8 ms) comes from consecutive matches; the only single match that lasted the full 180 s had light traffic.

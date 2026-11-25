@@ -98,7 +98,7 @@ The mock API runs in the browser through a service worker in development, tests 
 
 ### Reproducing the failure cases
 
-1. **Lost acknowledgment:** select *Lost acknowledgment*, play until the battle ends. The result shows *Saving…* while the first request times out, then the automatic retry receives the stored record (HTTP 200) and shows *Saved*. Both tabs list the match once.
+1. **Lost acknowledgment:** select *Lost acknowledgment*, play until the battle ends. The result shows *Saving...* while the first request times out, then the automatic retry receives the stored record (HTTP 200) and shows *Saved*. Both tabs list the match once.
 2. **Outage at the finish:** select *Offline at finish* and finish a battle. The result shows *Not saved yet* with **Retry save**. Reload: the result and the pending save are still there, and the menu says a battle is waiting. Start another battle to confirm the game stays playable. Switch back to *Normal*: the pending save is sent on the next load or with **Retry save**, and it appears once in each tab.
 3. **Stale responses:** select *Out-of-order responses*, open Ranking and page forward and back quickly. The slow response for an abandoned page never replaces the page on screen.
 4. **Read failures:** select *Ranking unavailable*, *HTTP 5xx* or *Connection lost* and open the Captain's Log. Each tab shows its own error with **Try again**; Play and Options keep working.
@@ -131,7 +131,7 @@ It never applies damage, points, winners or API results. Combat tests press real
 | 10 | Ranking and history paging, loading, empty, error | `tests/e2e/10-captains-log.spec.ts` |
 | 11 | Registration, both tabs updated, pending recovery after refresh | `tests/e2e/11-registration.spec.ts` |
 | 12 | Retry after timeout without duplicates, stale responses | `tests/e2e/12-idempotency-and-races.spec.ts` |
-| — | Visual baselines: menu, arena, result | `tests/e2e/13-visual.spec.ts` |
+| - | Visual baselines: menu, arena, result | `tests/e2e/13-visual.spec.ts` |
 
 Visual baselines are versioned in `tests/e2e/__screenshots__/` and were generated on macOS. Fonts differ between operating systems, so regenerate them with `npm run e2e:update` on another OS.
 

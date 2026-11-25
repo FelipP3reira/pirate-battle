@@ -33,14 +33,14 @@ test.describe('10 ranking and match history', () => {
 
   test('shows loading, then background refresh with cached rows', async ({ page }) => {
     await page.goto('/?scenario=slow#/log/ranking');
-    await expect(page.getByText('Loading ranking…')).toBeVisible();
+    await expect(page.getByText('Loading ranking...')).toBeVisible();
     await expect(page.locator('tbody tr')).toHaveCount(5, { timeout: 8000 });
     await page.getByRole('tab', { name: 'Match History' }).click();
-    await expect(page.getByText('Loading match history…')).toBeVisible();
+    await expect(page.getByText('Loading match history...')).toBeVisible();
     await page.getByRole('tab', { name: 'Ranking' }).click();
     await expect(page.locator('tbody tr')).toHaveCount(5);
-    await expect(page.getByText('Updating ranking…')).toBeVisible();
-    await expect(page.getByText('Updating ranking…')).toHaveCount(0, { timeout: 8000 });
+    await expect(page.getByText('Updating ranking...')).toBeVisible();
+    await expect(page.getByText('Updating ranking...')).toHaveCount(0, { timeout: 8000 });
   });
 
   test('empty scenario shows empty states', async ({ page }) => {
