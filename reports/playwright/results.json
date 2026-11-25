@@ -1,12 +1,12 @@
 {
   "config": {
     "argv": [
-      "/Users/felipepereira/.local/share/fnm/node-versions/v26.13.0/installation/bin/node",
-      "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/node_modules/.bin/playwright",
+      "node",
+      "./node_modules/.bin/playwright",
       "test"
     ],
-    "configFile": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/playwright.config.ts",
-    "rootDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
+    "configFile": "./playwright.config.ts",
+    "rootDir": "./tests/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": true,
@@ -22,7 +22,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/test-results",
+        "outputDir": "./test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -30,7 +30,7 @@
         },
         "id": "desktop-chromium",
         "name": "desktop-chromium",
-        "testDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
+        "testDir": "./tests/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -38,7 +38,7 @@
         "timeout": 90000
       },
       {
-        "outputDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/test-results",
+        "outputDir": "./test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -46,7 +46,7 @@
         },
         "id": "mobile-chromium",
         "name": "mobile-chromium",
-        "testDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
+        "testDir": "./tests/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -58,15 +58,15 @@
       {
         "grep": {},
         "grepInvert": null,
-        "outputDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/test-results",
+        "outputDir": "./test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "actualWorkers": 3
         },
         "name": "desktop-chromium",
-        "testDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
-        "snapshotDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
+        "testDir": "./tests/e2e",
+        "snapshotDir": "./tests/e2e",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
@@ -106,15 +106,15 @@
       {
         "grep": {},
         "grepInvert": null,
-        "outputDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/test-results",
+        "outputDir": "./test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "actualWorkers": 3
         },
         "name": "mobile-chromium",
-        "testDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
-        "snapshotDir": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e",
+        "testDir": "./tests/e2e",
+        "snapshotDir": "./tests/e2e",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 90000,
@@ -1947,7 +1947,7 @@
                       "type": "skip",
                       "description": "Touch input runs on the mobile project",
                       "location": {
-                        "file": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e/09-abandon-navigation-touch.spec.ts",
+                        "file": "./tests/e2e/09-abandon-navigation-touch.spec.ts",
                         "line": 83,
                         "column": 10
                       }
@@ -1972,7 +1972,7 @@
                           "type": "skip",
                           "description": "Touch input runs on the mobile project",
                           "location": {
-                            "file": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e/09-abandon-navigation-touch.spec.ts",
+                            "file": "./tests/e2e/09-abandon-navigation-touch.spec.ts",
                             "line": 83,
                             "column": 10
                           }
@@ -2024,7 +2024,7 @@
                       "type": "skip",
                       "description": "Layout check runs on the mobile project",
                       "location": {
-                        "file": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e/09-abandon-navigation-touch.spec.ts",
+                        "file": "./tests/e2e/09-abandon-navigation-touch.spec.ts",
                         "line": 126,
                         "column": 10
                       }
@@ -2049,7 +2049,7 @@
                           "type": "skip",
                           "description": "Layout check runs on the mobile project",
                           "location": {
-                            "file": "/Users/felipepereira/Desktop/FELIPEPereira/game-developer-challenge/tests/e2e/09-abandon-navigation-touch.spec.ts",
+                            "file": "./tests/e2e/09-abandon-navigation-touch.spec.ts",
                             "line": 126,
                             "column": 10
                           }
