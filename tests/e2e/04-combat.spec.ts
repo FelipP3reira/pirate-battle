@@ -106,4 +106,27 @@ test.describe('04 combat', () => {
     expect(damage).toBeLessThanOrEqual(60);
     expect(state.projectiles.filter((projectile) => projectile.vx < 0)).toHaveLength(3 - damage / 20);
   });
+
+  test('shots from a shooter that sinks first never reach the player', async ({ page }) => {
+    await startMatch(page, {
+      seed: 5,
+      manualClock: true,
+      setup: { player: START, enemies: [{ kind: 'shooter', x: START.x - 400, y: START.y, angle: 0 }] },
+    });
+    await pressKey(page, 'KeyQ');
+    let state = await observe(page);
+    expect(state.projectiles.filter((projectile) => projectile.faction === 'enemy')).toHaveLength(1);
+
+    while (state.enemies.length > 0) {
+      await advance(page, 1000 / 60);
+      state = await observe(page);
+      expect(state.elapsed).toBeLessThan(1);
+    }
+    expect(state.score).toBe(1);
+    expect(state.player.health).toBe(100);
+    expect(state.projectiles.filter((projectile) => projectile.faction === 'enemy')).toHaveLength(0);
+
+    await advance(page, 1500);
+    expect((await observe(page)).player.health).toBe(100);
+  });
 });

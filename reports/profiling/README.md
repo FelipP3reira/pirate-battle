@@ -36,10 +36,10 @@ Raw data: `*.json` (summary, timeline per second, matches and cycles), `*-frame-
 
 ### What each run shows
 
-- **Sustained heavy load.** The `stress-hard-spawn-1s-sustained` run kept the arena busy for 190 active seconds: 6 enemies on average and the 12-enemy cap reached. In 124 of the 195 logged seconds there were 6 or more enemies at once. No frame took longer than 16.8 ms. This is the main evidence that combat holds 60 FPS under load.
+- **Sustained heavy load.** The `stress-hard-spawn-1s-sustained` run adds up to 190 active seconds across 8 consecutive matches of 16 to 37 s each (about 24 s on average): 6 enemies on average and the 12-enemy cap reached. In 124 of the 195 logged seconds there were 6 or more enemies at once. No frame took longer than 16.8 ms. This is the main evidence that combat holds 60 FPS under load.
 - **A full three-minute match.** `session-180s-spawn-10s` is the only single match that lasted the full 180 s. It is light (0.4 enemies on average, at most one), so it shows a complete match lifecycle rather than load.
 - **GPU fill rate.** The 1080p DPR 2 run pushes about 4.5 times the pixels of the 1280 × 720 runs at the same frame rate.
-- **Long frames.** Each Normal session had one 100 ms frame out of about 8,000. The heavy stress run had none, so this does not scale with entity count. It is most likely a garbage-collection or browser pause.
+- **Long frames.** Each Normal session had one 100 ms frame out of about 8,000. The heavy stress run had none, so it does not appear to scale with entity count. The cause was not investigated; a garbage-collection or browser pause is a hypothesis, not a confirmed finding.
 
 ## Resources across start / play / exit cycles
 

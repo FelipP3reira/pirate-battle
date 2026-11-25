@@ -101,4 +101,4 @@ Data flows one way during a battle: input → `Simulation.advance` → events an
 - Islands are axis-aligned blocks taken from the supplied tile set. The grass block shows the faint seams present in the source art.
 - Enemy avoidance is local (probe-based), so a ship can briefly scrape a coast before sliding around it.
 - Visual baselines are platform-dependent because of system fonts.
-- Profiling ran on a single machine (see `reports/profiling/`). Lower-end phones were not measured. The heavy-load evidence (190 s at 6 enemies on average, cap reached, no frame over 16.8 ms) comes from consecutive matches; the only single match that lasted the full 180 s had light traffic.
+- Profiling ran on a single machine (see `reports/profiling/`). Lower-end phones were not measured. The heavy-load evidence (190 s at 6 enemies on average, cap reached, no frame over 16.8 ms) adds up 8 consecutive matches of about 24 s each; the only single match that lasted the full 180 s had light traffic. Two Normal sessions each had one unexplained 100 ms frame.
