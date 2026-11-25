@@ -96,6 +96,12 @@ export function updateProjectiles(world: World, dt: number): void {
   const { arena, player } = world;
   const survivors = [];
   for (const projectile of world.projectiles) {
+    // The brief says destroyed enemies stop dealing damage, so shots still in
+    // the air when their ship sinks go down with it.
+    if (projectile.faction === 'enemy' && !world.enemies.some((enemy) => enemy.id === projectile.sourceId)) {
+      world.events.push({ type: 'splash', x: projectile.x, y: projectile.y, surface: 'water' });
+      continue;
+    }
     projectile.prevX = projectile.x;
     projectile.prevY = projectile.y;
     const speed = Math.hypot(projectile.vx, projectile.vy);
